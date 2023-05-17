@@ -19,12 +19,13 @@ export default function ModelMovie({e}) {
 		})
 		.catch((error)=>{
 			console.log(error)})
-		
+			
 	}
 	function handelchange (e){
 		setComment({comment:e.target.value});
+		
 	}
-	console.log(comment)
+
 	return (
 		<>
 	

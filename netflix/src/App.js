@@ -4,6 +4,7 @@ import { Route,Routes } from 'react-router-dom';
 import Home from './components/Home';
 import FavList from './components/FavList';
 import Navbar1 from './components/Navbar1';
+import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
     <>
