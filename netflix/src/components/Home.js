@@ -4,7 +4,7 @@ import MovieList from './MovieList';
 export default function Home() {
 	const [movie,setMovie]=useState([]);
 	const getallfav = () =>{
-		const url='http://localhost:3006/trend'
+		const url=`${process.env.REACT_APP_serverURL}/trend`
 		axios.get(url)
         .then(response=>{
 					setMovie(response.data)
