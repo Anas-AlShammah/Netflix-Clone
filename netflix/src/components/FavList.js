@@ -5,11 +5,12 @@ import Card from 'react-bootstrap/Card';
 export default function FavList (){
 	const [comment,setComment]=useState({});
 	const [listFav,setListFav]=useState([]);
+	const [updata,setUpdata]=useState(false);
 	const getFavlist = ()=>{
 		const url ='http://localhost:3006/getMovies'
 		axios.get(url)
 		 .then(res=>{
-			console.log(res.data);
+			
 			setListFav(res.data)
 		 })
 		 .catch((error)=>{
@@ -22,7 +23,7 @@ export default function FavList (){
 	function handelDelete (id){
 		setListFav(listfav=>listFav.filter(e=>e.id != id))
 		const url =`http://localhost:3006/delete/${id}`
-		console.log(url)
+		
 		axios.delete(url)
 		 .then(res=>console.log(res.data))
 		 .catch((error)=>console.log(error))
@@ -30,11 +31,11 @@ export default function FavList (){
 	async function handelUpdata (id,comment){
 		const url =`http://localhost:3006/UPDATE/${id}`
 		const result=await axios.put(url,comment);
-		console.log(result.data)
+		
 		const url1 ='http://localhost:3006/getMovies'
 		axios.get(url1)
 		 .then(res=>{
-			console.log(res.data);
+			
 			setListFav(res.data)
 		 })
 		 .catch((error)=>{
@@ -44,29 +45,36 @@ export default function FavList (){
 	function handelchange (e){
 		setComment({comment:e.target.value});
 	}
+	function handelApper(){
+		setUpdata(true);
+	}
 	return(
 		<>
 		{listFav.map(e=>(
 			 <Card style={{ width: '18rem' }}>
-     
+    
 			 <Card.Body>
 			 <Card.Title>{e.title}{e.id}</Card.Title>
 				 
 		
-						<Card.Img variant="top" src="holder.js/100px180" />
+					
 				 <Card.Text>
-					 {e.overview}
+					 {e.summary}
 				 </Card.Text>
 				 <Card.Text>
 				 comment:
-				 <form >
+				 {updata ? ( <form >
 			
 			<input type="text" name="comment" onChange={handelchange} />
+			<Button variant="primary" onClick={()=>handelUpdata(e.id,comment)}>Updata</Button> 
 			</form> 
+			
+			): null}
+				
 					 {''} {e.comment}
 				 </Card.Text>
 				 <Button variant="primary" onClick={()=>handelDelete(e.id)}>Delete</Button>
-				 <Button variant="primary" onClick={()=>handelUpdata(e.id,comment)}>Updata</Button>
+				 {!updata && <button onClick={handelApper} >Updata</button> }
 			 </Card.Body>
 		 </Card>
 		))}

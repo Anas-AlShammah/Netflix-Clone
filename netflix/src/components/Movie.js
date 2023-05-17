@@ -20,9 +20,9 @@ export default function Movie({e}) {
         </Card.Text>
 				<ModelMovie e={e}/>
 				</>)
-				: null
+				:<Button variant="primary" onClick={handelDetails}>add to the favorite list</Button>
 				}
-        <Button variant="primary" onClick={handelDetails}>add to the favorite list</Button>
+        
       </Card.Body>
     </Card>
   );

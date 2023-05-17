@@ -4,15 +4,20 @@ import Navbar from 'react-bootstrap/Navbar';
 export default function Navbar1 (){
 	return(
 		<>
-		<Navbar bg="primary" variant="dark">
-				<Container>
-						
-						<Nav className="me-auto">
+		
+		<Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+      <Container>
+        <Navbar.Brand href="#home">Movie App</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+				<Nav className="me-auto">
 								<Nav.Link href="/">Home</Nav.Link>
 								<Nav.Link href="/favlist">FavList</Nav.Link>
 						</Nav>
-				</Container>
-		</Navbar>
+         
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
 </>
 	)
 }
