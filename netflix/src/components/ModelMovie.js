@@ -12,7 +12,7 @@ export default function ModelMovie({e}) {
 		item={...item,...comment}
 		console.log(item);
 	iditem=e.item	;
-		const url='http://localhost:3006/addMovie'
+		const url=`${process.env.REACT_APP_serverURL}/addMovie`
 		axios.post(url,item)
 		.then(res=>{
 			console.log(res)

@@ -14,9 +14,10 @@ export default function Movie({e}) {
 			<Card.Title>{e.title}</Card.Title>
 				{details ? (
 					<>
-					 <Card.Img variant="top" src="holder.js/100px180" />
+					
+					 <Card.Img variant="top" src={'https://www.themoviedb.org/t/p/w300_and_h450_bestv2'+e.poster_path} />
         <Card.Text>
-          {e.overview}
+				
         </Card.Text>
 				<ModelMovie e={e}/>
 				</>)

@@ -7,7 +7,7 @@ export default function FavList (){
 	const [listFav,setListFav]=useState([]);
 	const [updata,setUpdata]=useState(false);
 	const getFavlist = ()=>{
-		const url ='http://localhost:3006/getMovies'
+		const url =`${process.env.REACT_APP_serverURL}/getMovies`
 		axios.get(url)
 		 .then(res=>{
 			
@@ -22,17 +22,17 @@ export default function FavList (){
 	},[comment])
 	function handelDelete (id){
 		setListFav(listfav=>listFav.filter(e=>e.id != id))
-		const url =`http://localhost:3006/delete/${id}`
+		const url =`${process.env.REACT_APP_serverURL}/delete/${id}`
 		
 		axios.delete(url)
 		 .then(res=>console.log(res.data))
 		 .catch((error)=>console.log(error))
 	}
 	async function handelUpdata (id,comment){
-		const url =`http://localhost:3006/UPDATE/${id}`
+		const url =`${process.env.REACT_APP_serverURL}/UPDATE/${id}`
 		const result=await axios.put(url,comment);
 		
-		const url1 ='http://localhost:3006/getMovies'
+		const url1 =`${process.env.REACT_APP_serverURL}/getMovies`
 		axios.get(url1)
 		 .then(res=>{
 			
